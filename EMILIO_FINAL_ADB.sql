@@ -1,7 +1,7 @@
 create database Orfanato_2
 use Orfanato_2
 go
---TABLA HUERFANO--
+--TABLA HUERFANO---
 Create table huerfano
 (id_huer int,
 codigo_diagnostico varchar (15),
@@ -19,7 +19,7 @@ primary key (id_huer)
 drop table huerfano
 
 insert into huerfano values
-(1,8001,1001,2001,'Luis','Velez','2003-10-13','2004-11-10','Venezolano',17,'Perdido en el País'),
+(1,8001,1001,2001,'Luis','Velez','2003-10-13','2004-11-10','Venezolano',17,'Perdido en el Paï¿½s'),
 (2,8002,1002,2002,'Ronald','Quiroz','2004-11-13','2005-12-14','Ecuatoriano',16,'Fallecieron sus padres'),
 (3,8003,1003,2003,'Jennifer','Mero','2005-09-13','2010-12-13','Ecuatoriana',15,'Sin familiares');
 
@@ -40,9 +40,9 @@ primary key (codigo_adopcion)
 );
 
 insert into adopcion values
-('1351447071',1001,'5001','2020-01-10','El niño extrañará a sus amigos','Sí' ),
-('1234488921',1002,'5002','2020-11-11','El niño está de acuerdo con su nueva familia','No'),
-('1948123453',1003,'5003','2020-05-18','La niña está de acuerdo con su nueva familia','Sí');
+('1351447071',1001,'5001','2020-01-10','El niï¿½o extraï¿½arï¿½ a sus amigos','Sï¿½' ),
+('1234488921',1002,'5002','2020-11-11','El niï¿½o estï¿½ de acuerdo con su nueva familia','No'),
+('1948123453',1003,'5003','2020-05-18','La niï¿½a estï¿½ de acuerdo con su nueva familia','Sï¿½');
 
 
 drop table adopcion
@@ -64,12 +64,12 @@ primary key (id_c)
 drop table seguimiento
 
 insert into seguimiento values
-(1,'3001','4001','5001','2019-12-10','El niño se encuentra en buen estado','Buena'),
-(2,'3001','4001','5001','2019-12-17','El niño se encuentra en buen estado','Buena'),
-(3,'3001','4001','5001','2020-01-06','El niño se encuentra en buen estado','Buena'),
+(1,'3001','4001','5001','2019-12-10','El niï¿½o se encuentra en buen estado','Buena'),
+(2,'3001','4001','5001','2019-12-17','El niï¿½o se encuentra en buen estado','Buena'),
+(3,'3001','4001','5001','2020-01-06','El niï¿½o se encuentra en buen estado','Buena'),
 (4,'3002','4002','5002','2020-10-11','Sin datos','sin datos'),
 (5,'3002','4002','5002','2020-10-18','Sin datos','sin datos'),
-(6,'3003','4003','5003','2020-04-18','El niño se encuentra en buen estado','Buena');
+(6,'3003','4003','5003','2020-04-18','El niï¿½o se encuentra en buen estado','Buena');
 
 
 
@@ -112,9 +112,9 @@ primary key (cedula)
 drop table persona_adopcion
 
 insert into persona_adopcion values
-('1269874321','Dante','Cedeño','No posee antecedentes','casado','Julia','Ortiz','Terapeuta','Barrio Jocay',1100),
+('1269874321','Dante','Cedeï¿½o','No posee antecedentes','casado','Julia','Ortiz','Terapeuta','Barrio Jocay',1100),
 ('1354058382','Alisson','Gomez','No posee antecendentes','casada','Cristian','Ronaldo','Enfermera','Los Esteros',800),
-('1324853924','Robert','Velez','No posee antecendentes','casado','Gema','García','Abogado','Barrio el Paraiso',1000);
+('1324853924','Robert','Velez','No posee antecendentes','casado','Gema','Garcï¿½a','Abogado','Barrio el Paraiso',1000);
 
 select * from persona_adopcion
 use Orfanato_2
@@ -193,7 +193,7 @@ primary key (codigo_doctor)
 insert into doctor values
 (1010,'Marcelo','Cobos','Audiologista'),
 (1011,'Ricardo','Calderon','Pediatra '),
-(1012,'Josue','Palacios','Neurólogo');
+(1012,'Josue','Palacios','Neurï¿½logo');
 
 select * from doctor
 use Orfanato_2
@@ -215,12 +215,12 @@ select h.nombre, count (d.codigo_diagnostico) as [Cantidad de Consultas Medicas]
 where d.codigo_diagnostico = h.codigo_diagnostico
 group by d.codigo_diagnostico, h.nombre
 
---Consultar qué niños no han sido adoptados--
+--Consultar quï¿½ niï¿½os no han sido adoptados--
 
-select a.adoptado as [Niños No Adoptados], h.nombre as [Nombre del Niño] from adopcion a, huerfano h where a.codigo_huerfano = h.codigo_huerfano and a.adoptado ='No'
---En caso de consultar por los niños que han sido adoptados
-select a.adoptado as [Niños Adoptados], h.nombre as [Nombre del Niño]from adopcion a, huerfano h where a.codigo_huerfano = h.codigo_huerfano and a.adoptado ='Sí'
---Total de niños no adoptados
+select a.adoptado as [Niï¿½os No Adoptados], h.nombre as [Nombre del Niï¿½o] from adopcion a, huerfano h where a.codigo_huerfano = h.codigo_huerfano and a.adoptado ='No'
+--En caso de consultar por los niï¿½os que han sido adoptados
+select a.adoptado as [Niï¿½os Adoptados], h.nombre as [Nombre del Niï¿½o]from adopcion a, huerfano h where a.codigo_huerfano = h.codigo_huerfano and a.adoptado ='Sï¿½'
+--Total de niï¿½os no adoptados
 select count (a.adoptado) as [No adoptados] from adopcion a where a.adoptado = 'No'
---Total de niños adoptados
-select count (a.adoptado) as [Si adoptados] from adopcion a where a.adoptado = 'Sí'
+--Total de niï¿½os adoptados
+select count (a.adoptado) as [Si adoptados] from adopcion a where a.adoptado = 'Sï¿½'
